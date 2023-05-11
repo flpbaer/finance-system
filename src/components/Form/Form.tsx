@@ -56,7 +56,6 @@ function Form({ handleAdd, transactionsList, setTransactionsList }: Props) {
               placeholder="Ex: 00.000,00"
               onChange={(e) => setAmount(e.target.value)}
               value={amount}
-              type="number"
               style={{ borderRadius: "2px", height: "64px", marginTop: "3px" }}
             />
             <div
