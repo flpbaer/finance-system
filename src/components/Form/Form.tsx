@@ -1,21 +1,22 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
 import { Area, Container } from "./style";
 import { Button, Input, message } from "antd";
+import { Transaction } from "../../types/types";
 
 type Props = {
-  handleAdd(transaction: any): void;
-  transactionsList: string[];
-  setTransactionsList: Dispatch<SetStateAction<any>>;
+  handleAdd(transaction: Transaction): void;
+  transactionsList: Transaction[];
+  setTransactionsList: Dispatch<SetStateAction<Transaction[]>>;
 };
 
 function Form({ handleAdd, transactionsList, setTransactionsList }: Props) {
-  const [desc, setDesc] = useState<any>("");
-  const [amount, setAmount] = useState<any>();
-  const [isExpense, setExpense] = useState<any>(false);
+  const [desc, setDesc] = useState<string>("");
+  const [amount, setAmount] = useState<number | undefined>();
+  const [isExpense, setExpense] = useState<boolean>(false);
 
-  const generateID = () => Math.round(Math.random() * 1000);
+  const generateID = (): number => Math.round(Math.random() * 1000);
 
-  const handleSave = () => {
+  const handleSave = (): void => {
     if (!desc || !amount) {
       message.info("Informe a descrição e o valor!");
       return;
@@ -24,9 +25,9 @@ function Form({ handleAdd, transactionsList, setTransactionsList }: Props) {
       return;
     }
 
-    const transaction = {
+    const transaction: Transaction = {
       id: generateID(),
-      desc: desc,
+      description: desc,
       amount: amount,
       expense: isExpense,
     };
@@ -34,9 +35,8 @@ function Form({ handleAdd, transactionsList, setTransactionsList }: Props) {
     handleAdd(transaction);
 
     setDesc("");
-    setAmount(null);
+    setAmount(undefined);
   };
-
 
   return (
     <>
@@ -45,7 +45,8 @@ function Form({ handleAdd, transactionsList, setTransactionsList }: Props) {
           <span>Nome</span>
           <Input
             placeholder="Digite aqui o nome"
-            value={desc} onChange={(e) => setDesc(e.target.value)}
+            value={desc}
+            onChange={(e) => setDesc(e.target.value)}
             style={{ marginTop: "4px", borderRadius: "4px", height: "40px" }}
           />
         </Area>
@@ -54,8 +55,9 @@ function Form({ handleAdd, transactionsList, setTransactionsList }: Props) {
           <div style={{ display: "flex" }}>
             <Input
               placeholder="Ex: 00.000,00"
-              onChange={(e) => setAmount(e.target.value)}
+              onChange={(e) => setAmount(Number(e.target.value))}
               value={amount}
+              type="number"
               style={{ borderRadius: "2px", height: "64px", marginTop: "3px" }}
             />
             <div

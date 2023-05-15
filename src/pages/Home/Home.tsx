@@ -4,17 +4,18 @@ import Header from "../../components/Header/Header";
 import Resume from "../../components/Resume/resume";
 import Form from "../../components/Form/Form";
 import Grid from "../../components/Grid/Grid";
+import { Transaction } from "../../types/types";
 
 type Props = {
-  total: any;
+  total: number;
   income: number;
   expense: number;
-  handleAdd(transaction: any): void;
-  transactionsList: string[];
-  setTransactionsList: Dispatch<SetStateAction<any>>;
+  handleAdd(transaction: Transaction): void;
+  transactionsList: Transaction[];
+  setTransactionsList: Dispatch<SetStateAction<Transaction[]>>;
 };
 
-function ExamplePage({
+function Home({
   total,
   income,
   expense,
@@ -38,4 +39,4 @@ function ExamplePage({
   );
 }
 
-export default ExamplePage;
+export default Home;

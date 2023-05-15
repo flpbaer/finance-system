@@ -8,11 +8,16 @@ type PropsItem = {
 };
 
 function GridItem({ item, onDelete }: PropsItem) {
+  const formattedAmount = item.amount.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
   return (
     <Container>
       <LeftContent>
-        <span>{item.desc}</span>
-        <span style={{marginTop: "5px"}}>R$ {item.amount}</span>
+        <span>{item.description}</span>
+        <span style={{marginTop: "5px"}}>{formattedAmount}</span>
       </LeftContent>
       <RightContent>
         <div

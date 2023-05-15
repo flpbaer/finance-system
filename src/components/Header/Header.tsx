@@ -2,7 +2,7 @@ import React from "react";
 import { ContainerHeader, Subtitle, Title } from "./style";
 import { formatToRealBR } from "../helpers/moneyHelper";
 type Props = {
-  value: any;
+  value: number;
 };
 
 function Header({ value }: Props) {

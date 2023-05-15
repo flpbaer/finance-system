@@ -1,6 +1,7 @@
-export type ItemType = {
-name: string
-value: number
-category: string;
-}
-
+export interface Transaction {
+    description: string;
+    amount: number;
+    expense: boolean;
+    id: number;
+  }
+  
