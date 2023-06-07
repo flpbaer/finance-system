@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, LeftContent, RightContent } from "./style";
 import { BiTrash } from "react-icons/bi";
+import { BsFillArrowDownCircleFill, BsFillArrowUpCircleFill } from "react-icons/bs";
 
 type PropsItem = {
   onDelete(id: any): void;
@@ -16,7 +17,10 @@ function GridItem({ item, onDelete }: PropsItem) {
   return (
     <Container>
       <LeftContent>
+        <div style={{display:"flex", alignItems: "center"}}>
         <span>{item.description}</span>
+        {item.expense ? <BsFillArrowDownCircleFill style={{color: "red", marginLeft: "6px"}}/> : <BsFillArrowUpCircleFill style={{color: "green", marginLeft: "6px"}}/> }
+        </div>
         <span style={{marginTop: "5px"}}>{formattedAmount}</span>
       </LeftContent>
       <RightContent>
