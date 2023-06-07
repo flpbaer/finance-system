@@ -5,14 +5,14 @@ export const Container = styled.div`
   width: 100%;
   display: flex;
   min-height: 60px;
-  padding: 20px;
+  padding: 20px 20px 20px 16px;
 `;
 
 export const LeftContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  width: 90%;
+  word-break: break-word;
 `;
 
 export const RightContent = styled.div`

@@ -16,10 +16,12 @@ function GridItem({ item, onDelete }: PropsItem) {
 
   return (
     <Container>
+      <div style={{display: "flex", justifyContent: "center", alignItems: "center", marginRight: "15px"}}>
+        {item.expense ? <BsFillArrowDownCircleFill style={{color: "red"}}/> : <BsFillArrowUpCircleFill style={{color: "green"}}/> }
+      </div>
       <LeftContent>
         <div style={{display:"flex", alignItems: "center"}}>
-        <span>{item.description}</span>
-        {item.expense ? <BsFillArrowDownCircleFill style={{color: "red", marginLeft: "6px"}}/> : <BsFillArrowUpCircleFill style={{color: "green", marginLeft: "6px"}}/> }
+        <h3 style={{textTransform: "capitalize"}}>{item.description}</h3>
         </div>
         <span style={{marginTop: "5px"}}>{formattedAmount}</span>
       </LeftContent>
